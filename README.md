@@ -1,2 +1,2 @@
-# easy-yyjson
+# EasyYYJSON
 C++ json support based on yyjson
