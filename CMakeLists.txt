@@ -28,4 +28,4 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${YYJSON_RELEASE_FILE} WORKI
 # Add the library path to the project
 include_directories(${YYJSON_RELEASE_DIR}/yyjson-${YYJSON_RELEASE_VER}/src)
 
-message(STATUS "Using C++ standard: ${CMAKE_CXX_STANDARD}")
+

@@ -6,6 +6,14 @@ extern "C" {
 
 #include <memory>
 #include <string>
+<<<<<<< Updated upstream
+=======
+
+extern "C"
+{
+#include <yyjson.h>
+}
+>>>>>>> Stashed changes
 
 namespace EasyYYJSON
 {
@@ -34,6 +42,7 @@ namespace EasyYYJSON
     {
         public:
             explicit Document();
+<<<<<<< Updated upstream
             explicit Document(const std::string &json);
 
             bool parse(const std::string &json);
@@ -52,6 +61,13 @@ namespace EasyYYJSON
                 os << doc.stringify(StringifyFlag::PrettyIndent | StringifyFlag::NewLineEnding);
                 return os;
             }
+=======
+            bool parse(const std::string &str);
+            std::string lastErrorMessage() const;
+            static Document fromStdString(const std::string &str);
+            Value getRoot();
+            void setRoot(Value &value);
+>>>>>>> Stashed changes
         protected:
         private:
             std::shared_ptr<yyjson_mut_doc> _doc;
@@ -63,6 +79,47 @@ namespace EasyYYJSON
     {
         public:
             explicit Value();
+
+            bool clear();
+
+            bool isArray() const;
+            bool isObject() const;
+            bool isString() const;
+            bool isBoolean() const;
+            bool isInteger() const;
+            bool isFloat() const;
+            bool isLong() const;
+            bool isDouble() const;
+
+            Array getArray() const;
+            Object getObject() const;
+            std::string getString() const;
+            bool getBoolean() const;
+            int getInteger() const;
+            float getFloat() const;
+            long long getLong() const;
+            double getDouble() const;
+            
+            bool setValue(const Value &value);
+            bool setArray(const Array &array);
+            bool setObject(const Object &object);
+            bool setString(const std::string &str);
+            bool setBoolean(bool boolean);
+            bool setInteger(int32_t integer);
+            bool setFloat(float decimal);
+            bool setLong(int64_t longInteger);
+            bool setDouble(double longDecimal);
+
+            Value &operator = (const Value &value);
+            Value &operator = (const Array &array);
+            Value &operator = (const Object &object);
+            Value &operator = (const std::string &str);
+            Value &operator = (bool boolean);
+            Value &operator = (int32_t integer);
+            Value &operator = (float decimal);
+            Value &operator = (int64_t longInteger);
+            Value &operator = (double longDecimal);
+
         protected:
         private:
             std::shared_ptr<yyjson_mut_doc> _doc;
@@ -73,6 +130,11 @@ namespace EasyYYJSON
     {
         public:
             explicit Array();
+
+            bool clear();
+
+            Value &at(size_t index);
+            Value &operator [] (size_t index);
         protected:
         private:
             explicit Array(std::shared_ptr<yyjson_mut_doc> doc, yyjson_mut_val *arr);
@@ -85,6 +147,13 @@ namespace EasyYYJSON
     {
         public:
             explicit Object();
+
+            bool clear();
+            bool erase(const std::string &key);
+            
+            Value &operator [] (const std::string &key);
+            bool hasMember(const std::string &key) const;
+
         protected:
         private:
             explicit Object(std::shared_ptr<yyjson_mut_doc> doc, yyjson_mut_val *obj);

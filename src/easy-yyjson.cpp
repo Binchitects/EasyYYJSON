@@ -2,7 +2,7 @@
 
 EasyYYJSON::Document::Document()
 {
-    _doc = std::make_shared<yyjson_mut_doc>(yyjson_read("", 0, YYJSON_READ_NOFLAG), yyjson_doc_free);
+    _doc = std::shared_ptr<yyjson_mut_doc>(yyjson_mut_read("", 0, YYJSON_READ_NOFLAG), yyjson_mut_doc_free);
 }
 
 EasyYYJSON::Value::Value()
