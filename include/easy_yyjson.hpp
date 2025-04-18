@@ -49,6 +49,7 @@ namespace EasyYYJSON
             Value &operator=(const MutObject &rValue);
             Value &operator=(const MutArray &rValue);
 
+            bool isNull() const;
             bool isBool() const;
             bool isInt8() const;
             bool isInt16() const;
@@ -98,6 +99,7 @@ namespace EasyYYJSON
             MutValue &operator=(const MutObject &rValue);
             MutValue &operator=(const MutArray &rValue);
 
+            bool isNull() const;
             bool isBool() const;
             bool isInt8() const;
             bool isInt16() const;
